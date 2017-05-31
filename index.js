@@ -17,6 +17,11 @@ process.on('uncaughtException', function(e) {
     console.log('nonitorjs-report服务有未捕获到的异常，异常信息：', e);
     restartServer();
 });
+//监听子进程未捕获的异常
+mainServer.on('uncaughtException', function(e) {
+    console.log("nonitorjs-report服务的主子进程有未捕获到的异常，异常信息：", e);
+    restartServer();
+});
 //重启进程
 function restartServer(){
     console.log('nonitorjs-report 重新启动...');
